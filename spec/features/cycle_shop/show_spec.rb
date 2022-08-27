@@ -13,11 +13,7 @@ RSpec.describe 'the cycle_shop show page' do
       expect(page).to have_content(shop1.rental_program)
     end
   end
-#   User Story 7, Parent Child Count
 
-# As a visitor
-# When I visit a parent's show page
-# I see a count of the number of children associated with this parent
   describe 'the cycle_shop show page with bike count' do 
     describe 'As a visitor When I visit a parent\'s show page' do
       it 'shows a count of the number of children associated with this parent' do 
@@ -30,6 +26,15 @@ RSpec.describe 'the cycle_shop show page' do
         expect(page).to have_content(shop1.name)
         expect(page).to have_content("Bikes Available: #{shop1.bikes.count}")
       end
+    end
+
+    it 'Then I see a link at the top of the page that takes me to the Child Index' do
+      shop1 = CycleShop.create!({name: "Wheat Ridge Cyclery", rental_program: true, bike_capacity: 98})
+      bike1 = Bike.create!({brand: "Revel", frame_size: 19, demo_available: true, cycle_shop_id: shop1.id})
+      
+      visit "cycle_shops/#{shop1.id}"
+
+      expect(page).to have_link('Bike Index', exact: true)
     end
   end
 end
