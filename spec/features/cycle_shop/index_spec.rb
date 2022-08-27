@@ -30,6 +30,10 @@ RSpec.describe CycleShop, type: :feature do
       visit "/cycle_shops"
 
       expect(page).to have_link('Bike Index', exact: true)
+      
+      click_link('Bike Index')
+
+      expect(current_path).to eq('/bikes')
     end
   end
 end

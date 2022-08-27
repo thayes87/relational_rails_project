@@ -16,5 +16,18 @@ RSpec.describe Bike, type: :feature do
       expect(page).to have_content(bike2.frame_size)
       expect(page).to have_content(bike2.demo_available)
     end
+
+    it 'Then I see a link at the top of the page that takes me to the Parent Index' do
+      shop1 = CycleShop.create!({name: "Wheat Ridge Cyclery", rental_program: true, bike_capacity: 98})
+      bike1 = Bike.create!({brand: "Revel", frame_size: 19, demo_available: true, cycle_shop_id: shop1.id})
+      
+      visit "/bikes"
+
+      expect(page).to have_link('Shop Index', exact: true)
+
+      click_link('Shop Index')
+
+      expect(current_path).to eq('/cycle_shops')
+    end
   end
 end
