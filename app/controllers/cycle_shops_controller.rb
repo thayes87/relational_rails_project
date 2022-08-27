@@ -10,15 +10,14 @@ class CycleShopsController < ApplicationController
   end
 
   def new
-
   end
 
   def create 
-    cycle_shop = CycleShop.create!(
-      name: params[:name], 
-      rental_program: params[:rental_program],
-      bike_capacity: params[:bike_capacity]
-    )
+    cycle_shop = CycleShop.create!(cycle_shop_params)
     redirect_to "/cycle_shops/#{cycle_shop.id}"
+  end
+
+  def cycle_shop_params
+    params.permit(:name, :rental_program, :bike_capacity)
   end
 end
