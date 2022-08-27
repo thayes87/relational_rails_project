@@ -1,0 +1,8 @@
+<%= link_to "Shop Index", "/cycle_shops" %>
+<h1>Bikes</h1>
+
+<% @bikes.each do |bike| %>
+<p><%= bike.brand %></p>
+<p><%= bike.demo_available %></p>
+<p><%= bike.frame_size %></p>
+<% end %>

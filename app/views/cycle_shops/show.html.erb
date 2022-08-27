@@ -1,0 +1,11 @@
+<%= link_to "Bike Index", "/bikes" %> 
+<%= link_to "Shop Index", "/cycle_shops" %>
+
+<h1><%= @shop.name %></h1>
+
+<p><%= @shop.rental_program %></p>
+<p><%= @shop.bike_capacity %></p>
+
+<p>Bikes Available: <%= @bike_count %>
+
+<%= link_to "Cycle Shop Bikes", "/cycle_shop/#{@shop.id}/bikes" %>
