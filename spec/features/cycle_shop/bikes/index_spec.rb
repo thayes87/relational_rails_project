@@ -24,4 +24,6 @@ RSpec.describe 'CycleShop Bikes index', type: :feature do
       expect(page).to have_content(bike2.frame_size)
     end
   end
-end
+
+
+# end

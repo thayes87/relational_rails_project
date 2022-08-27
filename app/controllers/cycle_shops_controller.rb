@@ -6,5 +6,6 @@ class CycleShopsController < ApplicationController
 
   def show
     @shop = CycleShop.find(params[:id])
+    @bike_count = @shop.bikes.count 
   end
 end
