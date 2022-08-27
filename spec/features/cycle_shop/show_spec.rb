@@ -53,5 +53,18 @@ RSpec.describe 'the cycle_shop show page' do
 
       expect(current_path).to eq('/cycle_shops')
     end
+
+    it 'Then I see a link to take me to that parent\'s `child_table_name` page' do
+      shop1 = CycleShop.create!({name: "Wheat Ridge Cyclery", rental_program: true, bike_capacity: 98})
+      bike1 = Bike.create!({brand: "Revel", frame_size: 19, demo_available: true, cycle_shop_id: shop1.id})
+
+      visit "cycle_shops/#{shop1.id}"
+
+      expect(page).to have_link('Cycle Shop Bikes', exact: true)
+
+      click_link('Cycle Shop Bikes')
+
+      expect(current_path).to eq("/cycle_shop/#{shop1.id}/bikes")
+    end
   end
 end
