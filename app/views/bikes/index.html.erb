@@ -2,7 +2,7 @@
 <h1>Bikes</h1>
 
 <% @bikes.each do |bike| %>
-  <p><%= bike.brand %></p>
+  <p><%= bike.brand %><%= link_to "Edit", "/bikes/#{bike.id}/edit" %></p>
   <p><%= bike.demo_available %></p>
   <p><%= bike.frame_size %></p>
 <% end %>
