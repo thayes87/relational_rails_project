@@ -1,5 +1,5 @@
 <%= link_to "Bike Index", "/bikes" %><%= link_to "Shop Index", "/cycle_shops" %>
-<h1><%= @bike.brand %></h1>
+<h1><%= @bike.brand %></h1> <p><%= link_to "Update Bike", "/bikes/#{@bike.id}/edit", method: :get %></p>
 
 <p><%= @bike.demo_available %></p>
 <p><%= @bike.frame_size %></p>
