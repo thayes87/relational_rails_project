@@ -35,5 +35,16 @@ RSpec.describe CycleShop, type: :feature do
 
       expect(current_path).to eq('/bikes')
     end
+
+    it 'can update Parent from the Parent index page' do
+      shop1 = CycleShop.create!({name: "Wheat Ridge Cyclery", rental_program: true, bike_capacity: 98})
+      shop2 = CycleShop.create!({name: "Subculture Cyclery", rental_program: false, bike_capacity: 104})
+      
+      visit '/cycle_shops'
+      expect(page).to have_link('Edit', exact: true)
+      
+      first(:link, 'Edit').click
+      expect(current_path).to eq("/cycle_shops/#{shop1.id}/edit")
+    end
   end
 end

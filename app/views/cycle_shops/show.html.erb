@@ -1,7 +1,7 @@
 <%= link_to "Bike Index", "/bikes" %> 
 <%= link_to "Shop Index", "/cycle_shops" %>
 
-<h1><%= @shop.name %></h1>
+<h1><%= @shop.name %></h1> <%= link_to "Edit", "/cycle_shops/#{@shop.id}/edit", method: :get %> </p>
 
 <p><%= @shop.rental_program %></p>
 <p><%= @shop.bike_capacity %></p>

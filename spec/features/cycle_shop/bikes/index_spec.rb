@@ -44,5 +44,57 @@ RSpec.describe 'CycleShop Bikes index', type: :feature do
 
       expect(current_path).to eq('/cycle_shops')
     end
+
+    it 'Then I see a link to add a new adoptable child for that parent "Create Child"' do
+      shop1 = CycleShop.create!({name: "Wheat Ridge Cyclery", rental_program: true, bike_capacity: 98})
+      bike1 = Bike.create!({brand: "Revel", frame_size: 19, demo_available: true, cycle_shop_id: shop1.id})
+
+      visit "/cycle_shop/#{shop1.id}/bikes"
+      expect(page).to have_link('Create Bike', exact: true)
+
+      click_link('Create Bike')
+      expect(current_path).to eq("/cycle_shop/#{shop1.id}/bikes/new")
+
+      fill_in('Brand', with: 'Seven')
+      fill_in('Frame size', with: 17)
+      fill_in('Demo available', with: false)
+      click_button('Submit')
+
+      bike = Bike.last.id
+      expect(current_path).to eq("/cycle_shop/#{shop1.id}/bikes")
+      expect(page).to have_content('Seven')
+    end
+
+    it 'Then I see a link to sort children in alphabetical order' do 
+      shop1 = CycleShop.create!({name: "Wheat Ridge Cyclery", rental_program: true, bike_capacity: 98})
+      bike1 = Bike.create!({brand: "Revel", frame_size: 19, demo_available: true, cycle_shop_id: shop1.id})
+      bike2 = Bike.create!({brand: "Why", frame_size: 17, demo_available: true, cycle_shop_id: shop1.id})
+      bike3 = Bike.create!({brand: "Commencal", frame_size: 19, demo_available: true, cycle_shop_id: shop1.id})
+      bike4 = Bike.create!({brand: "Atherton", frame_size: 18, demo_available: true, cycle_shop_id: shop1.id})
+      
+      visit "/cycle_shop/#{shop1.id}/bikes"
+      expect(page).to have_link('sort bikes alphabetically', exact: true)
+
+      click_link('sort bikes alphabetically')
+      expect(current_path).to eq("/cycle_shop/#{shop1.id}/bikes")
+      expect("Atherton").to appear_before("Commencal", only_text: true)
+      expect("Commencal").to appear_before("Revel", only_text: true)
+      expect("Revel").to appear_before("Why", only_text: true)
+    end
+    
+    it 'can update child from the parents child index page' do
+      shop1 = CycleShop.create!({name: "Wheat Ridge Cyclery", rental_program: true, bike_capacity: 98})
+      bike1 = Bike.create!({brand: "Revel", frame_size: 19, demo_available: true, cycle_shop_id: shop1.id})
+      bike2 = Bike.create!({brand: "Why", frame_size: 17, demo_available: true, cycle_shop_id: shop1.id})
+      bike3 = Bike.create!({brand: "Seven", frame_size: 17, demo_available: true, cycle_shop_id: shop1.id})
+      bike4 = Bike.create!({brand: "Commencal", frame_size: 15, demo_available: true, cycle_shop_id: shop1.id})
+      
+      visit "/cycle_shop/#{shop1.id}/bikes"
+
+      expect(page).to have_link('Edit', exact: true)
+      save_and_open_page
+      first(:link, 'Edit').click
+      expect(current_path).to eq("/bikes/#{bike1.id}/edit")
+    end
   end
 end

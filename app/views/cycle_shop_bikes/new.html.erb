@@ -1,0 +1,12 @@
+<%= form_with url:"/cycle_shop/#{@cycle_shop.id}/bikes", method: :post, local: true do |form| %>
+  <%= form.label :brand %>
+  <%= form.text_field :brand %>
+
+  <%= form.label :frame_size %>
+  <%= form.text_field :frame_size %>
+
+  <%= form.label :demo_available %>
+  <%= form.text_field :demo_available %>
+ 
+  <%= form.submit "Submit" %>
+<% end %>

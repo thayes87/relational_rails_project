@@ -43,5 +43,23 @@ RSpec.describe Bike, type: :feature do
 
       expect(current_path).to eq('/cycle_shops')
     end
+
+    it 'I see a link to update that Child "Update Child"' do
+      shop1 = CycleShop.create!({name: "Wheat Ridge Cyclery", rental_program: true, bike_capacity: 98})
+      bike1 = Bike.create!({brand: "Reve", frame_size: 19, demo_available: true, cycle_shop_id: shop1.id})
+
+      visit "/bikes/#{bike1.id}"
+      expect(page).to have_content("Reve")
+
+      click_link "Update Bike"
+      expect(current_path).to eq("/bikes/#{bike1.id}/edit")
+      
+      fill_in 'brand', with: "Revel"
+      fill_in 'frame_size', with: 19
+      fill_in 'demo_available', with: true
+
+      click_button "Submit"
+      expect(current_path).to eq("/bikes/#{bike1.id}")
+    end
   end
 end
