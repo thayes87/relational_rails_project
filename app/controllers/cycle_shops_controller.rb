@@ -17,17 +17,18 @@ class CycleShopsController < ApplicationController
     redirect_to "/cycle_shops/#{cycle_shop.id}"
   end
 
-  def cycle_shop_params
-    params.permit(:name, :rental_program, :bike_capacity)
-  end
-  
   def edit
     @cycle_shop = CycleShop.find(params[:id])
   end
-
+  
   def update
     shop = CycleShop.find(params[:id])
     cycle_shop = shop.update!(cycle_shop_params)
     redirect_to "/cycle_shops/#{shop.id}"
+  end
+  
+private
+  def cycle_shop_params
+    params.permit(:name, :rental_program, :bike_capacity)
   end
 end

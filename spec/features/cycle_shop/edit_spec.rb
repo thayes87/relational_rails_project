@@ -5,7 +5,7 @@ RSpec.describe 'cycle_shop edit' do
     shop1 = CycleShop.create!(name: "Oer the Edge", rental_program: true, bike_capacity: 275)
 
     visit "/cycle_shops/#{shop1.id}"
-    
+
     expect(page).to have_content("Oer the Edge")
 
     click_link "Edit"
@@ -14,7 +14,7 @@ RSpec.describe 'cycle_shop edit' do
     fill_in 'name', with: "Over the Edge"
     fill_in 'rental_program', with: true
     fill_in 'bike_capacity', with: 275
-   
+
     click_button "Submit"
     expect(current_path).to eq("/cycle_shops/#{shop1.id}")
 
