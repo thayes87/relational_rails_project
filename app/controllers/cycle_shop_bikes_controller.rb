@@ -1,7 +1,11 @@
 class CycleShopBikesController < ApplicationController
   def index 
     @cycle_shop = CycleShop.find(params[:id])
-    @bikes = @cycle_shop.bikes
+    if params[:sort].present?
+      @bikes = Bike.order(params[:sort])
+    else
+      @bikes = @cycle_shop.bikes
+    end
   end
 
   def new
