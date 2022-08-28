@@ -1,0 +1,11 @@
+<%= form_with url: "/cycle_shops/#{@cycle_shop.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :rental_program %>
+  <%= form.text_field :rental_program %>
+
+  <%= form.label :bike_capacity %>
+  <%= form.text_field :bike_capacity %>
+  <%= form.submit "Submit" %>
+<% end %>
