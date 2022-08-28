@@ -2,7 +2,7 @@
 <h1>CycleShops</h1>
 
 <% @cycle_shops.each do |shop| %>
-  <p><%= shop.name %> 
+  <p><%= shop.name %><%= link_to "Edit", "/cycle_shops/#{shop.id}/edit" %><p> 
   <p><%= shop.created_at %></p>
 <% end %>
 
