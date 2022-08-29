@@ -9,3 +9,4 @@
 <p>Bikes Available: <%= @bike_count %>
 
 <%= link_to "Cycle Shop Bikes", "/cycle_shop/#{@shop.id}/bikes" %>
+<%= link_to "Delete Cycle Shop", "/cycle_shops/#{@shop.id}", method: :delete %>

@@ -26,6 +26,12 @@ class CycleShopsController < ApplicationController
     cycle_shop = shop.update!(cycle_shop_params)
     redirect_to "/cycle_shops/#{shop.id}"
   end
+
+  def delete
+    shop = CycleShop.find(params[:id])
+    shop.destroy
+    redirect_to "/cycle_shops"
+  end
   
 private
   def cycle_shop_params
