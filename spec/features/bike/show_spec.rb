@@ -61,5 +61,20 @@ RSpec.describe Bike, type: :feature do
       click_button "Submit"
       expect(current_path).to eq("/bikes/#{bike1.id}")
     end
+
+    it 'Then I see a link to delete the parent' do
+      shop1 = CycleShop.create!({name: "Wheat Ridge Cyclery", rental_program: true, bike_capacity: 98})
+      bike1 = Bike.create!({brand: "Revel", frame_size: 19, demo_available: true, cycle_shop_id: shop1.id})
+      bike2 = Bike.create!({brand: "Why", frame_size: 17, demo_available: true, cycle_shop_id: shop1.id})
+      
+      visit "/bikes/#{bike1.id}"
+
+      expect(page).to have_link('Delete Bike', exact: true)
+      
+      click_link('Delete Bike')
+      expect(current_path).to eq('/bikes')
+      expect(page).to_not have_content("Revel")
+      expect(Bike.count).to eq(1)
+    end
   end
 end

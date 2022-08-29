@@ -5,3 +5,4 @@
 <p><%= @bike.demo_available %></p>
 <p><%= @bike.frame_size %></p>
 
+<%= link_to "Delete Bike", "/bikes/#{@bike.id}", method: :delete %>

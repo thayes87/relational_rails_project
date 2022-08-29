@@ -16,6 +16,12 @@ class BikesController < ApplicationController
     @b = @bike.update!(bike_params)
     redirect_to "/bikes/#{@bike.id}"
   end
+  
+  def delete
+    @bike = Bike.find(params[:id])
+    @bike.destroy
+    redirect_to "/bikes"
+  end
 
 private
   def bike_params
