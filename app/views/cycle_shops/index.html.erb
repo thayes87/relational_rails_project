@@ -1,9 +1,11 @@
 <%= link_to "Bike Index", "/bikes" %>
-<h1>CycleShops</h1>
+<h2>CycleShops</h2>
 
 <% @cycle_shops.each do |shop| %>
-  <p><%= shop.name %><%= link_to "Edit", "/cycle_shops/#{shop.id}/edit" %><p> 
+  <h3><a href="/cycle_shops/<%= shop.id %>"><%= shop.name %><a></h3>
+  <%= link_to "Edit", "/cycle_shops/#{shop.id}/edit" %></p> 
   <p><%= shop.created_at %></p>
 <% end %>
 
 <%= link_to "New Cycle Shop", "/cycle_shops/new" %>
+ 

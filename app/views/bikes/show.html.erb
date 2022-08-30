@@ -1,8 +1,12 @@
-<%= link_to "Bike Index", "/bikes" %><%= link_to "Shop Index", "/cycle_shops" %>
+<%= link_to "Bike Index", "/bikes" %>
+<br>
+<%= link_to "Shop Index", "/cycle_shops" %>
 
-<h1><%= @bike.brand %></h1> <p><%= link_to "Update Bike", "/bikes/#{@bike.id}/edit", method: :get %></p>
+<h1><%= @bike.brand %></h1> 
 
-<p><%= @bike.demo_available %></p>
-<p><%= @bike.frame_size %></p>
+<p>Demo Available: <%= @bike.demo_available %></p>
+<p>Frame Size: <%= @bike.frame_size %></p>
 
+<%= link_to "Update Bike", "/bikes/#{@bike.id}/edit", method: :get %>
+<br>
 <%= link_to "Delete Bike", "/bikes/#{@bike.id}", method: :delete %>

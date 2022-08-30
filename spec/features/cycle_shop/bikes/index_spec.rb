@@ -73,9 +73,9 @@ RSpec.describe 'CycleShop Bikes index', type: :feature do
       bike4 = Bike.create!({brand: "Atherton", frame_size: 18, demo_available: true, cycle_shop_id: shop1.id})
       
       visit "/cycle_shop/#{shop1.id}/bikes"
-      expect(page).to have_link('sort bikes alphabetically', exact: true)
+      expect(page).to have_link('Sort Bikes Alphabetically', exact: true)
 
-      click_link('sort bikes alphabetically')
+      click_link('Sort Bikes Alphabetically')
       expect(current_path).to eq("/cycle_shop/#{shop1.id}/bikes")
       expect("Atherton").to appear_before("Commencal", only_text: true)
       expect("Commencal").to appear_before("Revel", only_text: true)

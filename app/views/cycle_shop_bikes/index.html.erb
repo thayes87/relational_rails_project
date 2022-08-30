@@ -1,12 +1,15 @@
-<%= link_to "Bike Index", "/bikes" %><%= link_to "Shop Index", "/cycle_shops" %>
+<%= link_to "Bike Index", "/bikes" %>
+<br>
+<%= link_to "Shop Index", "/cycle_shops" %>
 
 <h2><%= @cycle_shop.name %></h2>
 
 <% @bikes.each do |bike| %>
- <p><%= bike.brand %><%= link_to "Edit", "/bikes/#{bike.id}/edit" %></p>
-  <p><%= bike.demo_available %></p>
-  <p><%= bike.frame_size %></p>
+ <p>Brand: <%= bike.brand %> <%= link_to "Edit", "/bikes/#{bike.id}/edit" %></p>
+  <p>Demo Available: <%= bike.demo_available %></p>
+  <p>Frame Size: <%= bike.frame_size %></p>
 <% end %>
 
-<p><%= link_to "Create Bike", "/cycle_shop/#{@cycle_shop.id}/bikes/new" %></p>
-<p><%= link_to 'sort bikes alphabetically', :sort => 'brand' %></p>
+<%= link_to "Create Bike", "/cycle_shop/#{@cycle_shop.id}/bikes/new" %>
+<br>
+<%= link_to 'Sort Bikes Alphabetically', :sort => 'brand' %>
