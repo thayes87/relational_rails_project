@@ -19,8 +19,8 @@ RSpec.describe CycleShop, type: :feature do
       visit "/cycle_shops"
 
       expect("Subculture").to appear_before("Wheat Ridge Cyclery", only_text: true)
-      expect(page).to have_content(shop1.created_at)
-      expect(page).to have_content(shop2.created_at)
+      expect(page).to have_content(shop1.created_at.strftime("%D"))
+      expect(page).to have_content(shop2.created_at.strftime("%D"))
     end
 
     it 'Then I see a link at the top of the page that takes me to the Child Index' do

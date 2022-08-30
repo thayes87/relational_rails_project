@@ -5,7 +5,7 @@
 <h2><%= @cycle_shop.name %></h2>
 
 <% @bikes.each do |bike| %>
- <p>Brand: <%= bike.brand %> <%= link_to "Edit", "/bikes/#{bike.id}/edit" %></p>
+  <p>Brand: <%= bike.brand %> <%= link_to "Edit", "/bikes/#{bike.id}/edit" %></p>
   <p>Demo Available: <%= bike.demo_available %></p>
   <p>Frame Size: <%= bike.frame_size %></p>
 <% end %>

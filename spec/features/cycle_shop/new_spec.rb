@@ -7,7 +7,7 @@ RSpec.describe 'the cycle_shop creation' do
       
     visit '/cycle_shops'
 
-    click_link('New Cycle Shop')
+    click_link('Create Shop')
     expect(current_path).to eq('/cycle_shops/new')
   end
 
@@ -17,7 +17,7 @@ RSpec.describe 'the cycle_shop creation' do
     fill_in('Name', with: 'Absolute Bikes')
     fill_in('Rental program', with: false)
     fill_in('Bike capacity', with: 77)
-    click_button('Create Cycle Shop')
+    click_button('Submit')
 
     new_cycle_shop_id = CycleShop.last.id
     expect(current_path).to eq("/cycle_shops/#{new_cycle_shop_id}")

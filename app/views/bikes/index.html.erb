@@ -2,7 +2,7 @@
 <h1>Bikes</h1>
 
 <% @bikes.each do |bike| %>
-  <p>Brand: <%= bike.brand %> <%= link_to "Edit", "/bikes/#{bike.id}/edit" %></p>
+  <p><a href="/bikes/<%= bike.id %>"><%= bike.brand %><a> <%= link_to "Edit", "/bikes/#{bike.id}/edit" %></p>
   <p>Demo Available: <%= bike.demo_available %></p>
   <p>Frame Size: <%= bike.frame_size %></p>
 <% end %>

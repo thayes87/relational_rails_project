@@ -1,3 +1,5 @@
+<h2>Create New Shop </h2>
+
 <%= form_with url:'/cycle_shops', method: :post, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
@@ -8,5 +10,5 @@
   <%= form.label :bike_capacity %>
   <%= form.text_field :bike_capacity %>
  
-  <%= form.submit "Create Cycle Shop" %>
+  <%= form.submit "Submit" %>
 <% end %>
