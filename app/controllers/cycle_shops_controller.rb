@@ -14,7 +14,7 @@ class CycleShopsController < ApplicationController
 
   def create 
     cycle_shop = CycleShop.create!(cycle_shop_params)
-    redirect_to "/cycle_shops/#{cycle_shop.id}"
+    redirect_to "/cycle_shops"
   end
 
   def edit
