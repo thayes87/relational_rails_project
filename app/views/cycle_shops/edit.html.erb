@@ -1,3 +1,4 @@
+<h2>Edit <%= @cycle_shop.name %></h2>
 <%= form_with url: "/cycle_shops/#{@cycle_shop.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>

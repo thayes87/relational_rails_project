@@ -1,3 +1,5 @@
+<h2>Create New Bike for <%= @cycle_shop.name %></h2>
+
 <%= form_with url:"/cycle_shop/#{@cycle_shop.id}/bikes", method: :post, local: true do |form| %>
   <%= form.label :brand %>
   <%= form.text_field :brand %>

@@ -14,7 +14,7 @@ class CycleShopsController < ApplicationController
 
   def create 
     cycle_shop = CycleShop.create!(cycle_shop_params)
-    redirect_to "/cycle_shops/#{cycle_shop.id}"
+    redirect_to "/cycle_shops"
   end
 
   def edit
@@ -25,6 +25,12 @@ class CycleShopsController < ApplicationController
     shop = CycleShop.find(params[:id])
     cycle_shop = shop.update!(cycle_shop_params)
     redirect_to "/cycle_shops/#{shop.id}"
+  end
+
+  def delete
+    shop = CycleShop.find(params[:id])
+    shop.destroy
+    redirect_to "/cycle_shops"
   end
   
 private

@@ -2,8 +2,13 @@
 require 'spec_helper'
 
 require 'simplecov'
-SimpleCov.start 'rails'
-
+# SimpleCov.start 'rails'
+SimpleCov.start :rails do
+  filters.clear # This will remove the :root_filter and :bundler_filter that come via simplecov's defaults
+  add_filter do |src|
+    !(src.filename =~ /^#{SimpleCov.root}/) unless src.filename =~ /my_engine/
+  end
+end
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production

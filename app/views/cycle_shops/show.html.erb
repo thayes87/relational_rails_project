@@ -1,11 +1,14 @@
-<%= link_to "Bike Index", "/bikes" %> 
+<%= link_to "Bike Index", "/bikes" %>
+<br>
 <%= link_to "Shop Index", "/cycle_shops" %>
 
-<h1><%= @shop.name %></h1> <%= link_to "Edit", "/cycle_shops/#{@shop.id}/edit", method: :get %> </p>
+<p><%= @shop.name %></h1> <%= link_to "Edit", "/cycle_shops/#{@shop.id}/edit", method: :get %> </p>
+<p>Shop Details: </p>
+<p>Rental Available: <%= @shop.rental_program %></p>
+<p>Shop Capacity: <%= @shop.bike_capacity %> Bikes</p>
 
-<p><%= @shop.rental_program %></p>
-<p><%= @shop.bike_capacity %></p>
-
-<p>Bikes Available: <%= @bike_count %>
+<p>Bikes Available: <%= @bike_count %></p>
 
 <%= link_to "Cycle Shop Bikes", "/cycle_shop/#{@shop.id}/bikes" %>
+<br>
+<%= link_to "Delete Cycle Shop", "/cycle_shops/#{@shop.id}", method: :delete %>
